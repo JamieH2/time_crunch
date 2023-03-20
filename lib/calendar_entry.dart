@@ -18,5 +18,16 @@ class CalendarEntry extends HiveObject {
   @HiveField(2)
   String text;
 
-  CalendarEntry({required this.date, required this.location, required this.text});
+  @HiveField(3)
+  int entryID;
+
+  @HiveField(4)
+  int userID;
+
+  @HiveField(5)
+  String location;
+
+
+
+  CalendarEntry({required this.date, required this.location, required this.text, required this.entryID, required this.userID, required this.location});
 }

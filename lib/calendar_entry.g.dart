@@ -20,19 +20,26 @@ class CalendarEntryAdapter extends TypeAdapter<CalendarEntry> {
       date: fields[0] as DateTime,
       location: fields[1] as String,
       text: fields[2] as String,
+      entryID: fields[3] as int,
+      userID: fields[4] as int,
+      location: fields[1] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, CalendarEntry obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.date)
       ..writeByte(1)
       ..write(obj.location)
       ..writeByte(2)
-      ..write(obj.text);
+      ..write(obj.text)
+      ..writeByte(3)
+      ..write(obj.entryID)
+      ..writeByte(4)
+      ..write(obj.userID);
   }
 
   @override
