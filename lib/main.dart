@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-//UwU
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'settings.dart';
 
 void main() async{
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
+  //Elliot testing the crud stuff for boxes
+  final settingsBox = await Hive.openBox('settings');
+  //that line should create the box for us to then open however many times later
+  //final settingsBox = Hive.box('settings');  this is the line we use later instead of opening it again
+  settingsBox.put('0', 0667);
+  final something = settingsBox.get('0');
+  print(something); //this SHOULD just print 0667 that we just added to the settings box
+  //
   runApp(const MyApp());
 }
 
