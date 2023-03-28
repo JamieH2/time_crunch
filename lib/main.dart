@@ -1,20 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
+//import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
 import 'settings.dart';
 
 void main() async{
-  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
-  //Elliot testing the crud stuff for boxes
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();   //HIVE SETUP
+  Hive.registerAdapter(SettingsAdapter());  //this needs to be done with each adapter
+
+  //final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
+  //Hive.init(appDocumentDir.path);   //related to the import that's greyed out ^
+
+  /////   Elliot testing the crud stuff for boxes   /////
+
+  late int userID;  //initialising one of the settings variables so i can take it out of the object
+
   final settingsBox = await Hive.openBox('settings');
   //that line should create the box for us to then open however many times later
   //final settingsBox = Hive.box('settings');  this is the line we use later instead of opening it again
-  settingsBox.put('0', 0667);
+  //yknow like in a different class further down like within a widget
+  settingsBox.put('0', 0667); //the key can also be a string, so for userID could be like EllCamacho etc
+                              //this ONLY puts the number 0667 into the entry for key 0
+
+  Settings settingsProfile1 = Settings(
+      settingsProfile: 1,
+      userID: 0667,
+      language: 'English',
+      colourblind: 'None',         //This is what making an object to then put in
+      audio: false,                //the box looks like
+      notifications: true);
+
+  settingsBox.put('1', settingsProfile1);
+
   final something = settingsBox.get('0');
-  print(something); //this SHOULD just print 0667 that we just added to the settings box
+  print(something); //this just prints 0667 that we just added to the settings box
+  final somethingElse = settingsBox.get('1');
+  print(somethingElse); //this isn't gonna print much bcus it's an object and we don't have like a repr function
+                        //defined or anything
+  Settings thisOne = settingsBox.get('1');
+  userID = thisOne.userID;
+  print(userID);  //so this looks kinda pointless but it's me retrieving specifically a variable from within the box
+                  //bcus as seen with the above lines you can't just print the whole thing like a list
   //
+
+
+  ///// end of Elliot demo-ing crud stuff //////
+
   runApp(const MyApp());
 }
 
@@ -22,8 +55,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
     // Hello- Test
   // This widget is the root of your application.
-  //Aman was here
-  //Sticky toffee pudding out on spotify now
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
