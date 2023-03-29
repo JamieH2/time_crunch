@@ -10,15 +10,26 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 2,
-        backgroundColor: Colors.blue,
-        title: Column(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Time Crunch",
-                style: TextStyle(fontSize: 15, color: Colors.white))
+            Text("Time Crunch"),
           ],
         ),
-        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // Handle the button press event
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
