@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'settings_page.dart';
 import 'package:flutter/material.dart';
 
 class MeetingPage extends StatelessWidget {
@@ -10,15 +10,32 @@ class MeetingPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 2,
-        backgroundColor: Colors.blue,
-        title: Column(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Time Crunch",
-                style: TextStyle(fontSize: 15, color: Colors.white))
+            Text("Time Crunch"),
           ],
         ),
-        centerTitle: true,
+        leading: Row(
+          children: [
+            Container(
+              width: 40,
+              child: Image.asset('assets/time_crunch_logo.png'),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+              // Handle the button press event
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
