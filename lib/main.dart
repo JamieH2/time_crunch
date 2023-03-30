@@ -69,28 +69,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CustomizedBottomNavigationbar(),
+      home: navBar(),
     );
   }
 }
 
-class CustomizedBottomNavigationbar extends StatefulWidget {
-  CustomizedBottomNavigationbar({Key? key}) : super(key: key);
+class navBar extends StatefulWidget {
+  navBar({Key? key}) : super(key: key);
 
   @override
-  _CustomizedBottomNavigationbarState createState() =>
-      _CustomizedBottomNavigationbarState();
+  _navBarState createState() =>
+      _navBarState();
 }
 
 
-class _CustomizedBottomNavigationbarState
-    extends State<CustomizedBottomNavigationbar> {
+class _navBarState
+    extends State<navBar> {
   int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: bodySection(),
-      bottomNavigationBar: customBottomNavigationBar(),
+      bottomNavigationBar: customBottomNavBar(),
     );
   }
 
@@ -111,8 +111,8 @@ class _CustomizedBottomNavigationbarState
   }
 
 // * BottomNavigationBar Section Components
-  customBottomNavigationBar() {
-    return BottomNavyBar(
+  customBottomNavBar() {
+    return BottomNavyBar(  //bottom navy bar can't change name because it's an import
       selectedIndex: index,
       backgroundColor: Colors.blue,
       items: [
