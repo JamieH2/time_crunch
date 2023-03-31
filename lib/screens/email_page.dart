@@ -1,6 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EmailPage extends StatefulWidget {
   const EmailPage({Key? key}) : super(key: key);
@@ -9,7 +9,11 @@ class EmailPage extends StatefulWidget {
   _EmailPageState createState() => _EmailPageState();
 }
 
-class _EmailPageState extends State<EmailPage>{
+class _EmailPageState extends State<EmailPage> {
+  final controllerTo = TextEditingController();
+  final controllerSubject = TextEditingController();
+  final controllerMessage = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,19 +47,110 @@ class _EmailPageState extends State<EmailPage>{
         ],
       ),
 
-      body: Center(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.message,
-              size: 120,
-              color: Colors.blue,
+            buildTextField(title: 'To', controller: controllerTo),
+            const SizedBox(height: 16),
+            buildTextField(title: 'Subject', controller: controllerSubject),
+            const SizedBox(height: 16),
+            buildTextField(
+              title: 'Message',
+              controller: controllerMessage,
+              maxLines: 8,
             ),
-            Text("Messages", style: TextStyle(fontSize: 70, color: Colors.white))
+            const SizedBox(height: 32),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size.fromHeight(50),
+                textStyle: TextStyle(fontSize: 20),
+              ),
+              child: Text ('SEND'),
+              onPressed: () => launchEmail(
+                toEmail: controllerTo.text,
+                subject: controllerSubject.text,
+                message: controllerMessage.text,
+              ),
+            ),
+            SizedBox(height: 32),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://mail.google.com';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Image.asset('assets/gmail.png', width: 80, height: 80),
+                ),
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://www.outlook.com';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                ),
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://mail.yahoo.com';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                ),
+              ],
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Future launchEmail({
+    required String toEmail,
+    required String subject,
+    required String message,
+  }) async {
+    final url =
+        'mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}';
+    if (await canLaunch(url)) {
+      await launch(url);
+    }
+  }
+
+  Widget buildTextField({
+    required String title,
+    required TextEditingController controller,
+    int maxLines = 1,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: controller,
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+        ),
+      ],
     );
   }
 }
