@@ -134,7 +134,7 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.meeting_room_outlined),
+          icon: Icon(Icons.people),
           title: Text('Meeting'),
           activeColor: Colors.white,
           textAlign: TextAlign.center,
