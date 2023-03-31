@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MeetingPage extends StatelessWidget {
   const MeetingPage({Key? key}) : super(key: key);
@@ -37,16 +38,47 @@ class MeetingPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.people,
-              size: 120,
-              color: Colors.blue,
+            SizedBox(height: 60, width: 2000,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://zoom.us/';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Image.asset(
+                        'assets/zoom logo.png', width: 240, height: 240),
+                  ),
+                ),
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://www.microsoft.com/en/microsoft-teams/log-in';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Image.asset(
+                        'assets/teams logo.png', width: 240, height: 240),
+                  ),
+                ),
+              ],
             ),
-            Text("Users", style: TextStyle(fontSize: 70, color: Colors.white))
           ],
         ),
       ),
