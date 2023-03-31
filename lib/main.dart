@@ -139,6 +139,7 @@ class _navBarState
           activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
+        //
 
       ],
       onItemSelected: (index) => setState(() => this.index = index),
