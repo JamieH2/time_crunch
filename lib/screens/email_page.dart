@@ -58,7 +58,7 @@ class _EmailPageState extends State<EmailPage> {
             buildTextField(
               title: 'Message',
               controller: controllerMessage,
-              maxLines: 8,
+              maxLines: 4,
             ),
             const SizedBox(height: 32),
             ElevatedButton(
@@ -86,7 +86,10 @@ class _EmailPageState extends State<EmailPage> {
                       throw 'Could not launch $url';
                     }
                   },
-                  child: Image.asset('assets/gmail.png', width: 80, height: 80),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Image.asset('assets/gmail.png', width: 80, height: 80),
+                  ),
                 ),
                 InkWell(
                   onTap: () async {
@@ -97,7 +100,10 @@ class _EmailPageState extends State<EmailPage> {
                       throw 'Could not launch $url';
                     }
                   },
-                  child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                  ),
                 ),
                 InkWell(
                   onTap: () async {
@@ -108,7 +114,10 @@ class _EmailPageState extends State<EmailPage> {
                       throw 'Could not launch $url';
                     }
                   },
-                  child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                  ),
                 ),
               ],
             ),
