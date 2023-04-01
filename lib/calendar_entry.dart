@@ -7,7 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-part 'navybar/calendar_entry.g.dart';
+part 'calendar_entry.g.dart';
 
 @HiveType(typeId: 0)   //these numbers may have to be unique
 class CalendarEntry extends HiveObject {

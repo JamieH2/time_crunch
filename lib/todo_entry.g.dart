@@ -1,38 +1,43 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'navybar/user.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class TodoEntryAdapter extends TypeAdapter<TodoEntry> {
   @override
   final int typeId = 0;
 
   @override
-  User read(BinaryReader reader) {
+  TodoEntry read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
-      userID: fields[0] as int,
-      email: fields[1] as String,
-      password: fields[2] as String,
+    return TodoEntry(
+      todoID: fields[0] as int,
+      userID: fields[1] as int,
+      text: fields[2] as String,
+      time: fields[3] as DateTime,
+      completed: fields[4] as bool,
     );
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, TodoEntry obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.userID)
+      ..write(obj.todoID)
       ..writeByte(1)
-      ..write(obj.email)
+      ..write(obj.userID)
       ..writeByte(2)
-      ..write(obj.password);
+      ..write(obj.text)
+      ..writeByte(3)
+      ..write(obj.time)
+      ..writeByte(4)
+      ..write(obj.completed);
   }
 
   @override
@@ -41,7 +46,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is TodoEntryAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
