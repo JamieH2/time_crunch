@@ -1,87 +1,73 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'settings_page.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:time_crunch/screens/settings_page.dart';
+
+import '../services/theme_services.dart';
+
+//void main() => runApp(const SettingsPage());
 
 class MeetingPage extends StatelessWidget {
   const MeetingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Time Crunch"),
-          ],
-        ),
-        leading: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, '/');
-          },
-          child: Container(
-            width: 50,
-            height: 50,
-            child: Image.asset('assets/time_crunch_logo.png'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Time Crunch"),
+            ],
           ),
-        ),
-        actions: [
-          Container(
-            padding: EdgeInsets.only(right: 20),
-            child: IconButton(
-              icon: Icon(Icons.settings, size: 40),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
-              },
+          leading: InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+            child: Container(
+              width: 50,
+              height: 50,
+              child: Image.asset('assets/time_crunch_logo.png'),
             ),
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          actions: [
+            Container(
+              padding: EdgeInsets.only(right: 20),
+              child: IconButton(
+                icon: Icon(Icons.settings, size: 40),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+        body: Column(
           children: [
-            SizedBox(height: 60, width: 2000,),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://zoom.us/';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: Image.asset(
-                        'assets/zoom logo.png', width: 240, height: 240),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GestureDetector(
+                onTap: () {
+                  ThemeService().switchTheme();
+                },
+                child: const Icon(Icons.nightlight_round, size: 50),
+              ),
+            ),
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                          (context, index) =>
+                          ListTile(title: Text('Item #$index')),
+                      childCount: 1000,
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://www.microsoft.com/en/microsoft-teams/log-in';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset(
-                        'assets/teams logo.png', width: 240, height: 240),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

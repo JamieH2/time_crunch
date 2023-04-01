@@ -44,6 +44,8 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   get_storage:
   get:
+  flutter_local_notifications:
+  flutter_native_timezone:
 
 dev_dependencies:
   flutter_test:

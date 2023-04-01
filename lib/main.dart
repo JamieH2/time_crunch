@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -15,7 +16,6 @@ import 'package:time_crunch/screens/email_page.dart';
 import 'package:time_crunch/screens/meeting_page.dart';
 import 'package:time_crunch/screens/news_page.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
-import 'package:time_crunch/screens/settings_page.dart';
 
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme:Themes.light,
       darkTheme: Themes.dark,
@@ -133,8 +133,8 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-            icon: Icon(Icons.check_circle_outline_rounded),
-            title: Text('ToDo'),
+            icon: Icon(Icons.people),
+            title: Text('Meetings'),
             //activeColor: Colors.white,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
@@ -144,8 +144,8 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.people),
-          title: Text('Meeting'),
+          icon: Icon(Icons.settings),
+          title: Text('Settings'),
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),

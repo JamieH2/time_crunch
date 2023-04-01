@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ToDoPage extends StatelessWidget {
   const ToDoPage({Key? key}) : super(key: key);
@@ -16,37 +17,72 @@ class ToDoPage extends StatelessWidget {
             Text("Time Crunch"),
           ],
         ),
-        leading: Row(
-          children: [
-            Container(
-              width: 40,
-              child: Image.asset('assets/time_crunch_logo.png'),
-            ),
-          ],
+        leading: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/');
+          },
+          child: Container(
+            width: 50,
+            height: 50,
+            child: Image.asset('assets/time_crunch_logo.png'),
+          ),
         ),
         actions: [
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
-              );
-              // Handle the button press event
-            },
+          Container(
+            padding: EdgeInsets.only(right: 20),
+            child: IconButton(
+              icon: Icon(Icons.settings, size: 40),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
+            ),
           ),
         ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.message,
-              size: 120,
-              color: Colors.blue,
+            SizedBox(height: 60, width: 2000,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://zoom.us/';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Image.asset(
+                        'assets/zoom logo.png', width: 240, height: 240),
+                  ),
+                ),
+                InkWell(
+                  onTap: () async {
+                    const url = 'https://www.microsoft.com/en/microsoft-teams/log-in';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Image.asset(
+                        'assets/teams logo.png', width: 240, height: 240),
+                  ),
+                ),
+              ],
             ),
-            Text("Messages", style: TextStyle(fontSize: 70, color: Colors.white))
           ],
         ),
       ),
