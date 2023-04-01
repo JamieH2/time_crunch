@@ -16,28 +16,18 @@ class SettingsPage extends StatelessWidget {
             Text("Time Crunch"),
           ],
         ),
-        leading: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, '/');
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
           },
-          child: Container(
-            width: 50,
-            height: 50,
-            child: Image.asset('assets/time_crunch_logo.png'),
-          ),
         ),
         actions: [
-          Container(
-            padding: EdgeInsets.only(right: 20),
-            child: IconButton(
-              icon: Icon(Icons.settings, size: 40),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
-              },
-            ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // Handle the button press event
+            },
           ),
         ],
       ),
