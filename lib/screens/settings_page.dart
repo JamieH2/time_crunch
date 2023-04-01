@@ -1,46 +1,54 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+
+void main() => runApp(const SettingsPage());
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Time Crunch"),
-          ],
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Time Crunch"),
+            ],
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              // Handle the button press event
+              Navigator.pop(context);
             },
           ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.settings,
-              size: 120,
-              color: Colors.blue,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Handle the button press event
+              },
             ),
-            Text("Settings", style: TextStyle(fontSize: 70, color: Colors.white))
+          ],
+        ),
+        // No appbar provided to the Scaffold, only a body with a
+        // CustomScrollView.
+        body: CustomScrollView(
+          slivers: [
+            // Add the app bar to the CustomScrollView.
+            // Next, create a SliverList
+            SliverList(
+              // Use a delegate to build items as they're scrolled on screen.
+              delegate: SliverChildBuilderDelegate(
+                // The builder function returns a ListTile with a title that
+                // displays the index of the current item.
+                    (context, index) => ListTile(title: Text('Item #$index')),
+                // Builds 1000 ListTiles
+                childCount: 1000,
+              ),
+            ),
           ],
         ),
       ),

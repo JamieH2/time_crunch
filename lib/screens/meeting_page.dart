@@ -9,7 +9,7 @@ class MeetingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -17,24 +17,28 @@ class MeetingPage extends StatelessWidget {
             Text("Time Crunch"),
           ],
         ),
-        leading: Row(
-          children: [
-            Container(
-              width: 40,
-              child: Image.asset('assets/time_crunch_logo.png'),
-            ),
-          ],
+        leading: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/');
+          },
+          child: Container(
+            width: 50,
+            height: 50,
+            child: Image.asset('assets/time_crunch_logo.png'),
+          ),
         ),
         actions: [
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
-              );
-              // Handle the button press event
-            },
+          Container(
+            padding: EdgeInsets.only(right: 20),
+            child: IconButton(
+              icon: Icon(Icons.settings, size: 40),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
+            ),
           ),
         ],
       ),
