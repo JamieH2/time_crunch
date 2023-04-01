@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:time_crunch/screens/theme.dart';
 //import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
 import 'settings.dart';
 
@@ -69,6 +70,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme:Themes.light,
+      darkTheme: Themes.dark,
+      themeMode: ThemeMode.light,
+
       home: navBar(),
     );
   }
@@ -114,29 +119,29 @@ class _navBarState
   customBottomNavBar() {
     return BottomNavyBar(  //bottom navy bar can't change name because it's an import
       selectedIndex: index,
-      backgroundColor: Colors.blue,
+      //backgroundColor: Colors.blue,
       items: [
         BottomNavyBarItem(
           icon: Icon(Icons.home_outlined),
           title: Text('Home'),
-          activeColor: Colors.white,
+          //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
             icon: Icon(Icons.check_circle_outline_rounded),
             title: Text('ToDo'),
-            activeColor: Colors.white,
+            //activeColor: Colors.white,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
           icon: Icon(Icons.email_outlined),
           title: Text('Email'),
-          activeColor: Colors.white,
+          //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: Icon(Icons.people),
           title: Text('Meeting'),
-          activeColor: Colors.white,
+          //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
         //
