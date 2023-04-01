@@ -1,5 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+part of 'todo_entry.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -46,7 +47,7 @@ class TodoEntryAdapter extends TypeAdapter<TodoEntry> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TodoEntryAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+          other is TodoEntryAdapter &&
+              runtimeType == other.runtimeType &&
+              typeId == other.typeId;
 }
