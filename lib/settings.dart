@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-part 'settings.g.dart';
+part 'navybar/settings.g.dart';
 
 @HiveType(typeId: 0)   //these numbers may have to be unique
 class Settings extends HiveObject {

@@ -1,44 +1,44 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'calendar_entry.dart';
+part of 'navybar/todo_entry.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CalendarEntryAdapter extends TypeAdapter<CalendarEntry> {
+class TodoEntryAdapter extends TypeAdapter<TodoEntry> {
   @override
   final int typeId = 0;
 
   @override
-  CalendarEntry read(BinaryReader reader) {
+  TodoEntry read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return CalendarEntry(
-      date: fields[0] as DateTime,
-      location: fields[1] as String,
+    return TodoEntry(
+      todoID: fields[0] as int,
+      userID: fields[1] as int,
       text: fields[2] as String,
-      entryID: fields[3] as int,
-      userID: fields[4] as int,
+      time: fields[3] as DateTime,
+      completed: fields[4] as bool,
     );
   }
 
   @override
-  void write(BinaryWriter writer, CalendarEntry obj) {
+  void write(BinaryWriter writer, TodoEntry obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.date)
+      ..write(obj.todoID)
       ..writeByte(1)
-      ..write(obj.location)
+      ..write(obj.userID)
       ..writeByte(2)
       ..write(obj.text)
       ..writeByte(3)
-      ..write(obj.entryID)
+      ..write(obj.time)
       ..writeByte(4)
-      ..write(obj.userID);
+      ..write(obj.completed);
   }
 
   @override
@@ -47,7 +47,7 @@ class CalendarEntryAdapter extends TypeAdapter<CalendarEntry> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CalendarEntryAdapter &&
+      other is TodoEntryAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-part 'user.g.dart';
+part 'navybar/user.g.dart';
 
 @HiveType(typeId: 0)   //these numbers may have to be unique
 class User extends HiveObject {
