@@ -35,10 +35,11 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.nightlight_round,
-              size: 120,
-              color: Colors.blue,
+            GestureDetector(
+              onTap:(){
+                print("tapped");
+              },
+              child: Icon(Icons.nightlight_round, size: 50,),
             ),
             Text("Settings", style: TextStyle(fontSize: 70, color: Colors.white))
           ],
