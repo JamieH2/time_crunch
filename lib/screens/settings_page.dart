@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/theme_services.dart';
+
 void main() => runApp(const SettingsPage());
 
 class SettingsPage extends StatelessWidget {
@@ -7,7 +9,6 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -33,20 +34,28 @@ class SettingsPage extends StatelessWidget {
             ),
           ],
         ),
-        // No appbar provided to the Scaffold, only a body with a
-        // CustomScrollView.
-        body: CustomScrollView(
-          slivers: [
-            // Add the app bar to the CustomScrollView.
-            // Next, create a SliverList
-            SliverList(
-              // Use a delegate to build items as they're scrolled on screen.
-              delegate: SliverChildBuilderDelegate(
-                // The builder function returns a ListTile with a title that
-                // displays the index of the current item.
-                    (context, index) => ListTile(title: Text('Item #$index')),
-                // Builds 1000 ListTiles
-                childCount: 1000,
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GestureDetector(
+                onTap: () {
+                  ThemeService().switchTheme();
+                },
+                child: const Icon(Icons.nightlight_round, size: 50),
+              ),
+            ),
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                          (context, index) =>
+                          ListTile(title: Text('Item #$index')),
+                      childCount: 1000,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

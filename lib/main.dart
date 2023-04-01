@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:time_crunch/services/theme_services.dart';
 import 'services/theme.dart';
 //import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
 import 'settings.dart';
@@ -18,6 +20,9 @@ import 'package:time_crunch/screens/settings_page.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();// elliot don't delete this its for the dark mode
+
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();   //HIVE SETUP
   Hive.registerAdapter(SettingsAdapter());  //this needs to be done with each adapter
@@ -72,7 +77,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme:Themes.light,
       darkTheme: Themes.dark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeService().theme,
 
       home: navBar(),
     );
