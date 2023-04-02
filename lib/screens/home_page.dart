@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:intl/intl.dart';
 import '../services/notification_services.dart';
 import '../services/theme.dart';
@@ -70,25 +71,46 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(DateFormat.yMMMMd().format(DateTime.now()),
-                      style: subHeadingStyle,
+                      Text(
+                        DateFormat.yMMMMd().format(DateTime.now()),
+                        style: subHeadingStyle,
                       ),
-                      Text("Today",
-                      style: headingStyle,
+                      Text(
+                        "Today",
+                        style: headingStyle,
                       ),
                     ],
                   ),
-                ), // Closing Container widget added here
-                MyButton(label: "+ Add task", onTap: ()=>null)
-
+                ),
+                MyButton(label: "+ Add task", onTap: ()=>null),
               ],
             ),
           ),
+          // Add a new row for the date picker
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 100,
+                  width: double.infinity,
+                  child: DatePicker(
+                    DateTime.now(),
+                    initialSelectedDate: DateTime.now(),
+                    selectionColor: Colors.green,
+                    selectedTextColor: Colors.white,
+                    dateTextStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
+
     );
   }
-}
-_addTaskBar(){
-
 }
