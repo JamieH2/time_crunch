@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../services/notification_services.dart';
-import '../services/theme_services.dart';
+import '../dark_mode/theme_services.dart';
 
 void main() => runApp(const SettingsPage());
 
@@ -16,13 +12,9 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage>{
 
-  var notifyHelper;
   @override
   void initState() {
     super.initState();
-    notifyHelper=NotifyHelper();
-    notifyHelper.requestIOSPermissions();
-    notifyHelper.initializeNotification();
   }
 
   @override
@@ -59,9 +51,14 @@ class _SettingsPageState extends State<SettingsPage>{
               child: GestureDetector(
                 onTap: () {
                   ThemeService().switchTheme();
-                  notifyHelper.displayNotification(title: "Theme Changed", body: Get.isDarkMode?"Activated Dark Them":"Activated light theme");
                 },
-                child: const Icon(Icons.nightlight_round, size: 50),
+                child: Row(
+                  children: [
+                    Icon(Icons.nightlight_round, size: 50),
+                    SizedBox(width: 10),
+                    Text("Click here for dark mode", style: TextStyle(fontSize: 16)),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -69,8 +66,7 @@ class _SettingsPageState extends State<SettingsPage>{
                 slivers: [
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
-                          (context, index) =>
-                          ListTile(title: Text('Item #$index')),
+                          (context, index) => ListTile(title: Text('Item #$index')),
                       childCount: 1000,
                     ),
                   ),

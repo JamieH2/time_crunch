@@ -33,3 +33,13 @@ TextStyle get headingStyle{
 
   );
 }
+
+TextStyle get titleStyle{
+  return GoogleFonts.lato(
+    textStyle: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
+
+  );
+}

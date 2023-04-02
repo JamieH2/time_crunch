@@ -4,16 +4,16 @@ import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:time_crunch/services/theme_services.dart';
-import 'services/theme.dart';
 //import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
+import 'dark_mode/theme.dart';
+import 'dark_mode/theme_services.dart';
 import 'settings.dart';
 
 //imports for the screens files Elliot's moving over from that github tutorial
 import 'package:time_crunch/screens/home_page.dart';
 import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
-import 'package:time_crunch/screens/settings_page2.dart';
+import 'package:time_crunch/screens/placeholder.dart';
 import 'package:time_crunch/screens/news_page.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
 
@@ -144,8 +144,8 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.settings),
-          title: Text('Settings'),
+          icon: Icon(Icons.question_mark),
+          title: Text('placeholder'),
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
