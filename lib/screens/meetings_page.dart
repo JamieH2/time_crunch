@@ -3,8 +3,8 @@ import 'settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MeetingPage extends StatelessWidget {
-  const MeetingPage({Key? key}) : super(key: key);
+class ToDoPage extends StatelessWidget {
+  const ToDoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class MeetingPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(30),
                     child: Image.asset(
-                        'assets/zoom logo.png', width: 240, height: 240),
+                        'assets/zoom logo.png', width: 180, height: 180),
                   ),
                 ),
                 InkWell(
@@ -78,7 +78,7 @@ class MeetingPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: Image.asset(
-                        'assets/teams logo.png', width: 240, height: 240),
+                        'assets/teams logo.png', width: 180, height: 180),
                   ),
                 ),
               ],

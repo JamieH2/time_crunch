@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'services/theme.dart';
 //import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
+import 'dark_mode/theme.dart';
+import 'dark_mode/theme_services.dart';
 import 'settings.dart';
 
 //imports for the screens files Elliot's moving over from that github tutorial
 import 'package:time_crunch/screens/home_page.dart';
-import 'package:time_crunch/screens/todo_page.dart';
+import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
-import 'package:time_crunch/screens/meeting_page.dart';
+import 'package:time_crunch/screens/placeholder.dart';
 import 'package:time_crunch/screens/news_page.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
-import 'package:time_crunch/screens/settings_page.dart';
 
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();// elliot don't delete this its for the dark mode
+
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();   //HIVE SETUP
   Hive.registerAdapter(SettingsAdapter());  //this needs to be done with each adapter
@@ -68,11 +73,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme:Themes.light,
       darkTheme: Themes.dark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeService().theme,
 
       home: navBar(),
     );
@@ -109,7 +114,7 @@ class _navBarState
       case 2 :
         return EmailPage();
       case 3:
-        return MeetingPage();
+        return MeetingsPage();
 
 
     }
@@ -128,8 +133,8 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-            icon: Icon(Icons.check_circle_outline_rounded),
-            title: Text('ToDo'),
+            icon: Icon(Icons.people),
+            title: Text('Meetings'),
             //activeColor: Colors.white,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
@@ -139,8 +144,8 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.people),
-          title: Text('Meeting'),
+          icon: Icon(Icons.question_mark),
+          title: Text('placeholder'),
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
