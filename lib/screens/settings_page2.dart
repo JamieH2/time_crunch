@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:time_crunch/screens/settings_page.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../services/notification_services.dart';
 import '../services/theme_services.dart';
 
-//void main() => runApp(const SettingsPage());
+void main() => runApp(const MeetingsPage());
 
-class MeetingPage extends StatelessWidget {
-  const MeetingPage({Key? key}) : super(key: key);
+class MeetingsPage extends StatefulWidget {
+  const MeetingsPage({Key? key}) : super(key: key);
+
+  @override
+  _MeetingsPage createState() => _MeetingsPage();
+}
+
+class _MeetingsPage extends State<MeetingsPage>{
+
+  var notifyHelper;
+  @override
+  void initState() {
+    super.initState();
+    notifyHelper=NotifyHelper();
+    notifyHelper.requestIOSPermissions();
+    notifyHelper.initializeNotification();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,28 +37,18 @@ class MeetingPage extends StatelessWidget {
               Text("Time Crunch"),
             ],
           ),
-          leading: InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, '/');
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
             },
-            child: Container(
-              width: 50,
-              height: 50,
-              child: Image.asset('assets/time_crunch_logo.png'),
-            ),
           ),
           actions: [
-            Container(
-              padding: EdgeInsets.only(right: 20),
-              child: IconButton(
-                icon: Icon(Icons.settings, size: 40),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()),
-                  );
-                },
-              ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Handle the button press event
+              },
             ),
           ],
         ),
@@ -52,6 +59,7 @@ class MeetingPage extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   ThemeService().switchTheme();
+                  notifyHelper.displayNotification(title: "Theme Changed", body: Get.isDarkMode?"Activated Dark Them":"Activated light theme");
                 },
                 child: const Icon(Icons.nightlight_round, size: 50),
               ),

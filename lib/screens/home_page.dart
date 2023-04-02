@@ -1,9 +1,26 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:intl/intl.dart';
+import '../services/notification_services.dart';
+import '../services/theme.dart';
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var notifyHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    notifyHelper = NotifyHelper();
+    notifyHelper.requestIOSPermissions();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,18 +58,27 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.apps,
-              size: 120,
-              color: Colors.blue,
-            ),
-            Text("Home", style: TextStyle(fontSize: 70, color: Colors.white))
-          ],
-        ),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(DateFormat.yMMMMd().format(DateTime.now()),
+                    style: subHeadingStyle,
+                    ),
+                    Text("Today",
+                    style: headingStyle,
+                    ),
+                  ],
+                ),
+              ), // Closing Container widget added here
+            ],
+          ),
+        ],
       ),
     );
   }

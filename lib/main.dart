@@ -11,9 +11,9 @@ import 'settings.dart';
 
 //imports for the screens files Elliot's moving over from that github tutorial
 import 'package:time_crunch/screens/home_page.dart';
-import 'package:time_crunch/screens/todo_page.dart';
+import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
-import 'package:time_crunch/screens/meeting_page.dart';
+import 'package:time_crunch/screens/settings_page2.dart';
 import 'package:time_crunch/screens/news_page.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
 
@@ -114,7 +114,7 @@ class _navBarState
       case 2 :
         return EmailPage();
       case 3:
-        return MeetingPage();
+        return MeetingsPage();
 
 
     }
