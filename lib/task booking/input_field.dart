@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../dark_mode/theme.dart';
 
@@ -30,6 +31,7 @@ class MyInputField extends StatelessWidget {
           Container(
             height: 52,
             margin: EdgeInsets.only(top:8.0),
+            padding: EdgeInsets.only(left: 14),
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.grey,
@@ -43,6 +45,22 @@ class MyInputField extends StatelessWidget {
                   child: TextFormField(
                     autofocus: false,
                       controller: controller,
+                    style: subTitleStyle,
+                    decoration: InputDecoration(
+                      hintText:hint,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color:context.theme.colorScheme.background,
+                              width: 0
+                        )
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color:context.theme.colorScheme.background,
+                              width: 0
+                          )
+                      ),
+                    ),
 
 
                   )

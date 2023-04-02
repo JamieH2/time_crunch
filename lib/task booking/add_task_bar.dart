@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../dark_mode/theme.dart';
 import 'input_field.dart';
 
-class AddTaskPage extends StatelessWidget {
+class AddTaskPage extends StatefulWidget {
   const AddTaskPage({Key? key}) : super(key: key);
 
+  @override
+  State<AddTaskPage> createState() => _AddTaskPageState();
+}
+
+class _AddTaskPageState extends State<AddTaskPage> {
+  DateTime _selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +47,9 @@ class AddTaskPage extends StatelessWidget {
               "Add Task",
                   style: headingStyle,
             ),
-            MyInputField(title: "Title", hint: "Enter your title")
-
+            MyInputField(title: "Title", hint: "Enter your title"),
+            MyInputField(title: "Note", hint: "Enter your note"),
+            MyInputField(title: "Date", hint: DateFormat.yMd().format(_selectedDate)),
           ],
         ),
       ),

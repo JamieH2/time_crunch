@@ -56,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage>{
                   children: [
                     Icon(Icons.nightlight_round, size: 50),
                     SizedBox(width: 10),
-                    Text("Click here for dark mode", style: TextStyle(fontSize: 16)),
+                    Text("Click moon for dark mode it will feel like nothing happeded but go back and you will see", style: TextStyle(fontSize: 16)),
                   ],
                 ),
               ),
