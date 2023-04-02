@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ), // Closing Container widget added here
-                MyButton(label:"+ Add task", onTap: ()=>null)
+                MyButton(label: "+ Add task", onTap: ()=>null)
 
               ],
             ),
@@ -88,4 +88,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+_addTaskBar(){
+
 }
