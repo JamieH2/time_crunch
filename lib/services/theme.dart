@@ -18,6 +18,7 @@ TextStyle get subHeadingStyle{
     textStyle: TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.bold,
+      color: Colors.grey,
     ),
 
   );

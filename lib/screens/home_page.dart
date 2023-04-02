@@ -2,6 +2,7 @@
 import 'package:intl/intl.dart';
 import '../services/notification_services.dart';
 import '../services/theme.dart';
+import '../widgets/button.dart';
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -60,23 +61,28 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(DateFormat.yMMMMd().format(DateTime.now()),
-                    style: subHeadingStyle,
-                    ),
-                    Text("Today",
-                    style: headingStyle,
-                    ),
-                  ],
-                ),
-              ), // Closing Container widget added here
-            ],
+          Container(
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 10,),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(DateFormat.yMMMMd().format(DateTime.now()),
+                      style: subHeadingStyle,
+                      ),
+                      Text("Today",
+                      style: headingStyle,
+                      ),
+                    ],
+                  ),
+                ), // Closing Container widget added here
+                MyButton(label:"+ Add task", onTap: ()=>null)
+
+              ],
+            ),
           ),
         ],
       ),
