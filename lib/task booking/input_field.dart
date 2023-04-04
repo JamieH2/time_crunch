@@ -43,6 +43,7 @@ class MyInputField extends StatelessWidget {
               children:[
                 Expanded(
                   child: TextFormField(
+                    readOnly:widget==null?false:true,
                     autofocus: false,
                       controller: controller,
                     style: subTitleStyle,
@@ -65,6 +66,7 @@ class MyInputField extends StatelessWidget {
 
                   )
                 ),
+                widget==null?Container():Container(child:widget)
               ]
             )
 
