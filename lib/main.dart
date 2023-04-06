@@ -13,7 +13,6 @@ import 'settings.dart';
 import 'package:time_crunch/screens/home_page.dart';
 import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
-import 'package:time_crunch/screens/placeholder.dart';
 import 'package:time_crunch/screens/news_page.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
 

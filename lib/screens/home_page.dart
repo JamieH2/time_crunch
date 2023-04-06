@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, top: 10,),
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 50,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           ),
           // Add a new row for the date picker
           Container(
-            margin: EdgeInsets.only(top: 40, bottom: 20, left: 20),
+            margin: EdgeInsets.only(top: 20, bottom: 20, left: 20),
             child: Row(
               children: [
                 Expanded(
