@@ -113,8 +113,6 @@ class _navBarState
         return ToDoPage();
       case 2 :
         return EmailPage();
-      case 3:
-        return MeetingsPage();
 
 
     }
@@ -140,12 +138,6 @@ class _navBarState
         BottomNavyBarItem(
           icon: Icon(Icons.email_outlined),
           title: Text('Email'),
-          //activeColor: Colors.white,
-          textAlign: TextAlign.center,
-        ),
-        BottomNavyBarItem(
-          icon: Icon(Icons.question_mark),
-          title: Text('placeholder'),
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),

@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           ),
           // Add a new row for the date picker
           Container(
-            margin: EdgeInsets.only(top: 30, left: 20,),
+            margin: EdgeInsets.only(top: 40, bottom: 20, left: 20),
             child: Row(
               children: [
                 Expanded(
