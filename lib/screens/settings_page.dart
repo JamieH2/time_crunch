@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../dark_mode/theme_services.dart';
+
 void main() => runApp(const SettingsPage());
 
 class SettingsPage extends StatefulWidget {
@@ -41,7 +43,9 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  ThemeService().switchTheme();
+                },
                 child: const Text("Dark Mode"),
               ),
               const SizedBox(height: 20),
