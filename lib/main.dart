@@ -112,6 +112,8 @@ class _navBarState
         return ToDoPage();
       case 2 :
         return EmailPage();
+      case 3 :
+        return NewsPage();
 
 
     }
@@ -140,7 +142,12 @@ class _navBarState
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
-        //
+        BottomNavyBarItem(
+          icon: Icon(Icons.newspaper_outlined),
+          title: Text('News'),
+          //activeColor: Colors.white,
+          textAlign: TextAlign.center,
+        ),
 
       ],
       onItemSelected: (index) => setState(() => this.index = index),
