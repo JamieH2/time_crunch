@@ -41,7 +41,12 @@ class _VideoAppState extends State<TutorialPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
             ),
           ],
         ),
@@ -50,7 +55,7 @@ class _VideoAppState extends State<TutorialPage> {
               ? AspectRatio(
             aspectRatio: _controller.value.aspectRatio,
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: MediaQuery.of(context).size.width * 1,
               child: VideoPlayer(_controller),
             ),
           )
