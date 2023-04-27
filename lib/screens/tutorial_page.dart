@@ -1,55 +1,80 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:time_crunch/screens/settings_page.dart';
+import 'package:video_player/video_player.dart';
 
-class TutorialPage extends StatelessWidget {
+void main() => runApp(const TutorialPage());
+
+/// Stateful widget to fetch and then display video content.
+class TutorialPage extends StatefulWidget {
   const TutorialPage({Key? key}) : super(key: key);
 
   @override
+  _VideoAppState createState() => _VideoAppState();
+}
+
+class _VideoAppState extends State<TutorialPage> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/videos/orange.mp4')
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {});
+      });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Time Crunch"),
-          ],
-        ),
-        leading: Row(
-          children: [
-            Container(
-              width: 40,
-              child: Image.asset('assets/time_crunch_logo.png'),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
-              );
-              // Handle the button press event
-            },
+    return MaterialApp(
+      title: 'Video Demo',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.settings,
-              size: 120,
-              color: Colors.blue,
+          centerTitle: true,
+          title: const Text("Tutorial"),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {},
             ),
-            Text("Settings", style: TextStyle(fontSize: 70, color: Colors.white))
           ],
+        ),
+        body: Center(
+          child: _controller.value.isInitialized
+              ? AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: VideoPlayer(_controller),
+            ),
+          )
+              : Container(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _controller.value.isPlaying
+                  ? _controller.pause()
+                  : _controller.play();
+            });
+          },
+          child: Icon(
+            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }

@@ -3,6 +3,7 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:time_crunch/screens/tutorial_page.dart';
 import '../dark_mode/theme.dart';
 import '../task booking/add_task_bar.dart';
 import 'settings_page.dart';
@@ -82,13 +83,23 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(AddTaskPage());
-                  },
-                  child: Text("+ Add task"),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(AddTaskPage());
+                      },
+                      child: Text("+ Add task"),
+                    ),
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(TutorialPage());
+                      },
+                      child: Text("Watch a tutorial"),
+                    ),
+                  ],
                 ),
-
               ],
             ),
           ),
