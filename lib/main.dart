@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:time_crunch/task_hive.dart';
+import 'hive_boxes.dart';
 //import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
 import 'dark_mode/theme.dart';
 import 'dark_mode/theme_services.dart';
@@ -33,7 +35,12 @@ void main() async{
   /////   Elliot testing the crud stuff for boxes   /////
 
   late int userID;  //initialising one of the settings variables so i can take it out of the object
+  await Hive.openBox<TodoTask>('task_hive');
 
+  // Assign the Hive box to the global variable
+  HiveBoxes.taskBox = Hive.box<TodoTask>('task_hive');
+  Hive.registerAdapter(TodoTaskAdapter());
+  Hive.registerAdapter(TimeOfDayAdapter());
   final settingsBox = await Hive.openBox('settings');
   //that line should create the box for us to then open however many times later
   //final settingsBox = Hive.box('settings');  this is the line we use later instead of opening it again

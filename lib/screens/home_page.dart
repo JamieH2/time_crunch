@@ -5,8 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../dark_mode/theme.dart';
 import '../task booking/add_task_bar.dart';
+import '../screens/my_tasks_page.dart';
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:time_crunch/task_hive.dart';
+import 'package:time_crunch/hive_boxes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,13 +25,21 @@ class _HomePageState extends State<HomePage> {
   DateTime _selectedDate = DateTime.now();
   var notifyHelper;
 
+
   @override
   void initState() {
     super.initState();
+    Hive.initFlutter();
+    //Hive.openBox<TodoTask>('task_hive');
+  }
+
+  void deleteTask(TodoTask task) {
+    task.delete();
   }
 
   @override
   Widget build(BuildContext context) {
+    final tasks = HiveBoxes.taskBox.values.toList();
     return Scaffold(
       //backgroundColor: Colors.white,
       appBar: AppBar(
@@ -44,8 +58,15 @@ class _HomePageState extends State<HomePage> {
             height: 50,
             child: Image.asset('assets/time_crunch_logo.png'),
           ),
+
         ),
         actions: [
+          ElevatedButton(
+            onPressed: () {
+              Get.to(TaskListPage());
+            },
+            child: Text("My Tasks"),
+          ),
           Container(
             padding: EdgeInsets.only(right: 20),
             child: IconButton(
@@ -58,6 +79,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
+
         ],
       ),
       body: Column(
@@ -88,6 +110,8 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: Text("+ Add task"),
                 ),
+
+
 
               ],
             ),
@@ -130,9 +154,11 @@ class _HomePageState extends State<HomePage> {
                       onDateChange: (date){
                         _selectedDate=date;
 
+
                       },
                     ),
                   ),
+
                 ),
               ],
             ),
@@ -142,3 +168,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+
