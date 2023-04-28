@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+            margin: const EdgeInsets.only(left: 5, right: 20, top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -109,12 +109,6 @@ class _HomePageState extends State<HomePage> {
                       child: Text("+ Add task"),
                     ),
                     SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        Get.to(TutorialPage());
-                      },
-                      child: Text("Watch a tutorial"),
-                    ),
                   ],
                 ),
               ],
@@ -128,8 +122,29 @@ class _HomePageState extends State<HomePage> {
               cellBorderColor: Colors.transparent,
             ),
           ),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "First time using the app? Click the button to the right to watch a tutorial!",
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(TutorialPage());
+                  },
+                  child: Text("Watch a tutorial"),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
+
+
     );
   }
 }
