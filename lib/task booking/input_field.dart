@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../dark_mode/theme.dart';
 
 class MyInputField extends StatelessWidget {
