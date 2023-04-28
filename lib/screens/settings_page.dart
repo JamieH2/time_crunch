@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../dark_mode/theme_services.dart';
 
 void main() => runApp(const SettingsPage());
@@ -7,73 +9,60 @@ class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage>{
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Settings"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: ElevatedButtonTheme(
+        data: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(15),
+            textStyle: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+            ),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Time Crunch"),
-            ],
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.settings),
-              onPressed: () {
-                // Handle the button press event
-              },
-            ),
-          ],
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GestureDetector(
-                onTap: () {
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
                   ThemeService().switchTheme();
                 },
-                child: Row(
-                  children: [
-                    Icon(Icons.nightlight_round, size: 50),
-                    SizedBox(width: 10),
-                    Text("Click moon for dark mode it will feel like nothing happeded but go back and you will see", style: TextStyle(fontSize: 16)),
-                  ],
-                ),
+                child: const Text("Dark Mode"),
               ),
-            ),
-            Expanded(
-              child: CustomScrollView(
-                slivers: [
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                          (context, index) => ListTile(title: Text('Item #$index')),
-                      childCount: 1000,
-                    ),
-                  ),
-                ],
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () async {
+                  const url = 'https://www.youtube.com/watch?v=_2yM8MM9qNs';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+                child: const Text("Video tutorial"),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

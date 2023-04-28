@@ -32,6 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  video_player: ^2.6.1
+
   hive: ^2.0.4
   hive_flutter: ^1.1.0
 
@@ -94,6 +96,19 @@ flutter:
     - assets/yahoo.png
     - assets/zoom logo.png
     - assets/teams logo.png
+    - assets/bbc logo.png
+    - assets/channel 4 news logo.png
+    - assets/daily mail logo.png
+    - assets/Independent news logo.png
+    - assets/guardian news.png
+    - assets/daily express logo.png
+    - assets/daily mirror logo.png
+    - assets/daily telegraph logo.png
+    - assets/financial times logo.png
+    - assets/itv news logo.png
+    - assets/the times logo.png
+    - assets/sky news logo.png
+    - assets/videos/orange.mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -15,7 +15,6 @@ import 'settings.dart';
 import 'package:time_crunch/screens/home_page.dart';
 import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
-import 'package:time_crunch/screens/placeholder.dart';
 import 'package:time_crunch/screens/news_page.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
 
@@ -120,8 +119,8 @@ class _navBarState
         return ToDoPage();
       case 2 :
         return EmailPage();
-      case 3:
-        return MeetingsPage();
+      case 3 :
+        return NewsPage();
 
 
     }
@@ -151,12 +150,11 @@ class _navBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.question_mark),
-          title: Text('placeholder'),
+          icon: Icon(Icons.newspaper_outlined),
+          title: Text('News'),
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
-        //
 
       ],
       onItemSelected: (index) => setState(() => this.index = index),
