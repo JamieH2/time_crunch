@@ -20,6 +20,7 @@ import 'package:time_crunch/screens/tutorial_page.dart';
 
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();// elliot don't delete this its for the dark mode

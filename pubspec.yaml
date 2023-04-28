@@ -31,9 +31,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  #for the tutorial page
   video_player: ^2.6.1
-
+  #for the calendar
+  syncfusion_flutter_calendar:
+  #for the database
   hive: ^2.0.4
   hive_flutter: ^1.1.0
 
