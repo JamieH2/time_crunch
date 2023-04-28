@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:time_crunch/screens/tutorial_page.dart';
 import '../dark_mode/theme.dart';
 import '../task booking/add_task_bar.dart';
 import '../screens/my_tasks_page.dart';
@@ -13,6 +13,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:time_crunch/task_hive.dart';
 import 'package:time_crunch/hive_boxes.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,12 +26,10 @@ class _HomePageState extends State<HomePage> {
   DateTime _selectedDate = DateTime.now();
   var notifyHelper;
 
-
   @override
   void initState() {
     super.initState();
     Hive.initFlutter();
-    //Hive.openBox<TodoTask>('task_hive');
   }
 
   void deleteTask(TodoTask task) {
@@ -41,7 +40,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final tasks = HiveBoxes.taskBox.values.toList();
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +56,6 @@ class _HomePageState extends State<HomePage> {
             height: 50,
             child: Image.asset('assets/time_crunch_logo.png'),
           ),
-
         ),
         actions: [
           ElevatedButton(
@@ -79,13 +76,12 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-
         ],
       ),
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, top: 10,),
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -104,63 +100,32 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(AddTaskPage());
-                  },
-                  child: Text("+ Add task"),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(AddTaskPage());
+                      },
+                      child: Text("+ Add task"),
+                    ),
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(TutorialPage());
+                      },
+                      child: Text("Watch a tutorial"),
+                    ),
+                  ],
                 ),
-
-
-
               ],
             ),
           ),
-          // Add a new row for the date picker
-          Container(
-            margin: EdgeInsets.only(top: 30, left: 20,),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 100,
-                    width: double.infinity,
-                    child: DatePicker(
-                      DateTime.now(),
-                      initialSelectedDate: DateTime.now(),
-                      selectionColor: Colors.blue,
-                      selectedTextColor: Colors.white,
-                      dateTextStyle: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey
-                        ),
-                      ),
-                      dayTextStyle: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey
-                        ),
-                      ),
-                      monthTextStyle: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey
-                        ),
-                      ),
-                      onDateChange: (date){
-                        _selectedDate=date;
-
-
-                      },
-                    ),
-                  ),
-
-                ),
-              ],
+          Expanded(
+            child: SfCalendar(
+              view: CalendarView.month,
+              firstDayOfWeek: 1,
+              initialSelectedDate: DateTime.now(),
+              cellBorderColor: Colors.transparent,
             ),
           ),
         ],
@@ -168,7 +133,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-
-
