@@ -116,10 +116,13 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
-            child: TableCalendar(
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
-              focusedDay: DateTime.now(),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 40.0),
+              child: TableCalendar(
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                focusedDay: DateTime.now(),
+              ),
             ),
           ),
           Container(
@@ -143,6 +146,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+
 
 
     );
