@@ -13,7 +13,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:time_crunch/task_hive.dart';
 import 'package:time_crunch/hive_boxes.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:table_calendar/table_calendar.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -115,11 +116,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
-            child: SfCalendar(
-              view: CalendarView.month,
-              firstDayOfWeek: 1,
-              initialSelectedDate: DateTime.now(),
-              cellBorderColor: Colors.transparent,
+            child: TableCalendar(
+              firstDay: DateTime.utc(2010, 10, 16),
+              lastDay: DateTime.utc(2030, 3, 14),
+              focusedDay: DateTime.now(),
             ),
           ),
           Container(
