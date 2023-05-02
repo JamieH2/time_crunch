@@ -59,12 +59,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Get.to(TaskListPage());
-            },
-            child: Text("My Tasks"),
-          ),
           Container(
             padding: EdgeInsets.only(right: 20),
             child: IconButton(
@@ -107,11 +101,18 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         Get.to(AddTaskPage());
                       },
-                      child: Text("+ Add task"),
+                      child: Text("Add task"),
                     ),
                     SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(TaskListPage());
+                      },
+                      child: Text("My Tasks"),
+                    ),
                   ],
                 ),
+
               ],
             ),
           ),
@@ -122,33 +123,36 @@ class _HomePageState extends State<HomePage> {
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 3, 14),
                 focusedDay: DateTime.now(),
+                headerVisible: false,
+                shouldFillViewport: true,
               ),
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "First time using the app? Click the button to the right to watch a tutorial!",
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(TutorialPage());
-                  },
-                  child: Text("Watch a tutorial"),
-                ),
-              ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Click the button to watch a tutorial!",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.to(TutorialPage());
+                    },
+                    child: Text("Watch a tutorial"),
+                  ),
+                ],
+              ),
             ),
           ),
+
         ],
       ),
-
-
-
     );
   }
 }

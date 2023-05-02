@@ -79,53 +79,59 @@ class _EmailPageState extends State<EmailPage> {
               ),
             ),
             SizedBox(height: 32),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://mail.google.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset('assets/gmail.png', width: 80, height: 80),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      const url = 'https://mail.google.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/gmail.png', width: 80, height: 80),
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://www.outlook.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                  SizedBox(width: 100), // add space between logos
+                  InkWell(
+                    onTap: () async {
+                      const url = 'https://www.outlook.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://mail.yahoo.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                  SizedBox(width: 100), // add space between logos
+                  InkWell(
+                    onTap: () async {
+                      const url = 'https://mail.yahoo.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
+
           ],
         ),
       ),

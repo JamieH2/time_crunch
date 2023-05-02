@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:time_crunch/screens/tutorial_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../dark_mode/theme_services.dart';
@@ -52,12 +55,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  const url = 'https://www.youtube.com/watch?v=_2yM8MM9qNs';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
-                  }
+                  Get.to(TutorialPage());
                 },
                 child: const Text("Video tutorial"),
               ),

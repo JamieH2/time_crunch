@@ -42,10 +42,16 @@ class NewsPage extends StatelessWidget {
           ),
         ],
       ),
-    body: SingleChildScrollView(
+      body: Column(
+          children: [
+      Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text('Scroll for more news providers'),
+    ),
+    SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Padding(
-    padding: const EdgeInsets.only(left: 16.0),
+    padding: const EdgeInsets.only(left: 16.0, top: 45),
     child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -263,6 +269,6 @@ class NewsPage extends StatelessWidget {
         ),
       ),
     ),
-    );
+    ]));
   }
 }

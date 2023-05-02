@@ -140,50 +140,58 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     onPressed: _getDateFromUser,
                   ),
                 ),
-                Row(
+                Column(
                   children: [
-                    Expanded(
-                      child: MyInputField(
-                        title: "Start Time",
-                        hint: _startTime.format(context),
-                        widget: IconButton(
-                          onPressed: () {
-                            _getTimeFromUser(isStartTime: true);
-                          },
-                          icon: Icon(
-                            Icons.access_time_rounded,
-                            color: Colors.grey,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: MyInputField(
+                            title: "Start Time",
+                            hint: _startTime.format(context),
+                            widget: IconButton(
+                              onPressed: () {
+                                _getTimeFromUser(isStartTime: true);
+                              },
+                              icon: Icon(
+                                Icons.access_time_rounded,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: MyInputField(
-                        title: "End Time",
-                        hint: _endTime.format(context),
-                        // convert TimeOfDay to String
-                        widget: IconButton(
-                          onPressed: () {
-                            _getTimeFromUser(isStartTime: false);
-                          },
-                          icon: Icon(
-                            Icons.access_time_rounded,
-                            color: Colors.grey,
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: MyInputField(
+                            title: "End Time",
+                            hint: _endTime.format(context),
+                            widget: IconButton(
+                              onPressed: () {
+                                _getTimeFromUser(isStartTime: false);
+                              },
+                              icon: Icon(
+                                Icons.access_time_rounded,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-
+                      ],
                     ),
-                    SizedBox(height: 0.0),
-                      ElevatedButton(
+                    SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
                         onPressed: () async {
                           await _addTask(_title, _note, _selectedDate, _startTime, _endTime);
                         },
                         child: Text('Add Task'),
-                      )
-                    ]
+                      ),
+                    ),
+                  ],
                 ),
+
+
               ],
             ),
           ),
