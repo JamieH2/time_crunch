@@ -32,6 +32,7 @@ class _VideoAppState extends State<TutorialPage> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          //this appbar has a back button on the left the company name center and the settings button right
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () => Navigator.of(context).pop(),
@@ -50,6 +51,7 @@ class _VideoAppState extends State<TutorialPage> {
             ),
           ],
         ),
+        // this is the code for tutorial video in a center widget
         body: Center(
           child: _controller.value.isInitialized
               ? AspectRatio(
@@ -61,6 +63,7 @@ class _VideoAppState extends State<TutorialPage> {
           )
               : Container(),
         ),
+        // this is the play button for the video
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 
+//this code manages switching between light and dark themes.
+// It stores if the dark mode is active and converts it to a boolean value. it then toggles between light and dark mode.
 class ThemeService{
   final _box = GetStorage();
   final _key = 'isDarkMode';

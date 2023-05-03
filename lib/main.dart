@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:time_crunch/task_hive.dart';
 import 'hive_boxes.dart';
-//import 'package:path_provider/path_provider.dart' as path_provider;   //pretty sure we don't need this but i'll keep it
 import 'dark_mode/theme.dart';
 import 'dark_mode/theme_services.dart';
 import 'settings.dart';
-
 //imports for the screens files Elliot's moving over from that github tutorial
 import 'package:time_crunch/screens/home_page.dart';
 import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
 import 'package:time_crunch/screens/news_page.dart';
-import 'package:time_crunch/screens/tutorial_page.dart';
-
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 
@@ -69,7 +63,6 @@ void main() async{
                   //bcus as seen with the above lines you can't just print the whole thing like a list
   //
 
-
   ///// end of Elliot demo-ing crud stuff //////
 
   runApp(const MyApp());
@@ -99,7 +92,6 @@ class navBar extends StatefulWidget {
       _navBarState();
 }
 
-
 class _navBarState
     extends State<navBar> {
   int index = 0;
@@ -122,8 +114,6 @@ class _navBarState
         return EmailPage();
       case 3 :
         return NewsPage();
-
-
     }
   }
 
@@ -156,7 +146,6 @@ class _navBarState
           //activeColor: Colors.white,
           textAlign: TextAlign.center,
         ),
-
       ],
       onItemSelected: (index) => setState(() => this.index = index),
     );

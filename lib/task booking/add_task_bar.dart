@@ -89,6 +89,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
+          //this appbar has a back button on the left the company name center and the settings button right
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -114,6 +115,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
           ],
         ),
         body: Padding(
+          // so the code in the body creates the input fields it also uses decoration to fade out the input form hints
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: SingleChildScrollView(
             child: Column(
@@ -190,8 +192,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ),
                   ],
                 ),
-
-
               ],
             ),
           ),

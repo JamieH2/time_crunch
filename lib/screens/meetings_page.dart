@@ -9,8 +9,8 @@ class ToDoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
+        //this appbar has our logo on the left the company name center and the settings button right
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
