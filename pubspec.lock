@@ -201,14 +201,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
-  dbus:
-    dependency: transitive
-    description:
-      name: dbus
-      sha256: "6f07cba3f7b3448d42d015bfd3d53fe12e5b36da2423f23838efc1d5fb31a263"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.7.8"
   fake_async:
     dependency: transitive
     description:
@@ -254,38 +246,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  flutter_local_notifications:
-    dependency: "direct main"
-    description:
-      name: flutter_local_notifications
-      sha256: "67d6f528b4e71606f6ad66d26dee4a1ae653d1f7e5ded4364167c735477b6b86"
-      url: "https://pub.dev"
-    source: hosted
-    version: "14.0.0"
-  flutter_local_notifications_linux:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications_linux
-      sha256: "909bb95de05a2e793503a2437146285a2f600cd0b3f826e26b870a334d8586d7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.0"
-  flutter_local_notifications_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications_platform_interface
-      sha256: "63235c42de5b6c99846969a27ad0209c401e6b77b0498939813725b5791c107c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0"
-  flutter_native_timezone:
-    dependency: "direct main"
-    description:
-      name: flutter_native_timezone
-      sha256: ed7bfb982f036243de1c068e269182a877100c994f05143c8b26a325e28c1b02
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -544,14 +504,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
-  petitparser:
-    dependency: transitive
-    description:
-      name: petitparser
-      sha256: "49392a45ced973e8d94a85fdb21293fbb40ba805fc49f2965101ae748a3683b4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.1.0"
   platform:
     dependency: transitive
     description:
@@ -709,14 +661,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
-  timezone:
-    dependency: transitive
-    description:
-      name: timezone
-      sha256: "24c8fcdd49a805d95777a39064862133ff816ebfffe0ceff110fb5960e557964"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.1"
   timing:
     dependency: transitive
     description:
@@ -877,14 +821,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  xml:
-    dependency: transitive
-    description:
-      name: xml
-      sha256: ac0e3f4bf00ba2708c33fbabbbe766300e509f8c82dbd4ab6525039813f7e2fb
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.0"
   yaml:
     dependency: transitive
     description:

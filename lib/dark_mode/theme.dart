@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// the class Theme defines the theme dark mode and light mode of the app, ive also saved some fonts here that use on the input form
 class Themes {
   static final light = ThemeData(
-  //primaryColor: Colors.green,
   brightness: Brightness.light,
   );
 
   static final dark = ThemeData(
-  //primarySwatch: Colors.green,
   brightness: Brightness.dark,
   );
 }
-
+// the code below sets up google fonts that are used in the input form
 TextStyle get subHeadingStyle{
   return GoogleFonts.lato(
     textStyle: TextStyle(

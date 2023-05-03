@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../dark_mode/theme_services.dart';
 
 void main() => runApp(const SettingsPage());
 
+//the settings page give the a couple of options of functionality, however we couldn't complete as much functionality as we wanted so it's a little bare.
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -19,6 +17,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //this appbar has our logo on the left the company name center and the settings button right
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Settings"),

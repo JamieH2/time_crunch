@@ -1,6 +1,4 @@
-import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:time_crunch/screens/tutorial_page.dart';
 import '../dark_mode/theme.dart';
@@ -8,13 +6,11 @@ import '../task booking/add_task_bar.dart';
 import '../screens/my_tasks_page.dart';
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:time_crunch/task_hive.dart';
 import 'package:time_crunch/hive_boxes.dart';
 import 'package:table_calendar/table_calendar.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,8 +20,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime _selectedDate = DateTime.now();
-  var notifyHelper;
 
   @override
   void initState() {
@@ -42,9 +36,10 @@ class _HomePageState extends State<HomePage> {
     final tasks = HiveBoxes.taskBox.values.toList();
     return Scaffold(
       appBar: AppBar(
+        //this appbar has our logo on the left the company name center and the settings button right
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text("Time Crunch"),
           ],
         ),
@@ -60,13 +55,13 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           Container(
-            padding: EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: 20),
             child: IconButton(
-              icon: Icon(Icons.settings, size: 40),
+              icon: const Icon(Icons.settings, size: 40),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
                 );
               },
             ),
@@ -76,6 +71,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Container(
+            //this adds a header of today's date and the word today
             margin: const EdgeInsets.only(left: 5, right: 20, top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,27 +92,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Row(
+                  //this adds two buttons next to each other allowing the user to view and add tasks
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Get.to(AddTaskPage());
+                        Get.to(const AddTaskPage());
                       },
-                      child: Text("Add task"),
+                      child: const Text("Add task"),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     ElevatedButton(
                       onPressed: () {
-                        Get.to(TaskListPage());
+                        Get.to(const TaskListPage());
                       },
-                      child: Text("My Tasks"),
+                      child: const Text("My Tasks"),
                     ),
                   ],
                 ),
-
               ],
             ),
           ),
           Expanded(
+            //this is the calendar i have used i've changed the attributes so it fills the available space
             child: Padding(
               padding: const EdgeInsets.only(top: 40.0),
               child: TableCalendar(
@@ -129,28 +126,28 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SingleChildScrollView(
+            //this allows the user to click a button to watch a tutorial
             scrollDirection: Axis.horizontal,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Click the button to watch a tutorial!",
                     style: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   ElevatedButton(
                     onPressed: () {
                       Get.to(TutorialPage());
                     },
-                    child: Text("Watch a tutorial"),
+                    child: const Text("Watch a tutorial"),
                   ),
                 ],
               ),
             ),
           ),
-
         ],
       ),
     );
