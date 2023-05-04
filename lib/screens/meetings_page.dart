@@ -44,7 +44,7 @@ class ToDoPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(30),
-        child: Column(
+        child: Column( //Aligns images in a column in the center
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 60, width: 2000,),
@@ -53,7 +53,7 @@ class ToDoPage extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () async {
-                    const url = 'https://zoom.us/';
+                    const url = 'https://zoom.us/'; //Adds hyperlink to image
                     if (await canLaunch(url)) {
                       await launch(url);
                     } else {
@@ -68,7 +68,7 @@ class ToDoPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () async {
-                    const url = 'https://www.microsoft.com/en/microsoft-teams/log-in';
+                    const url = 'https://www.microsoft.com/en/microsoft-teams/log-in'; //Adds hyperlink to image
                     if (await canLaunch(url)) {
                       await launch(url);
                     } else {
