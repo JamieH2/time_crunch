@@ -7,7 +7,7 @@ import 'hive_boxes.dart';
 import 'dark_mode/theme.dart';
 import 'dark_mode/theme_services.dart';
 import 'settings.dart';
-//imports for the screens files Elliot's moving over from that github tutorial
+//imports for the screens files
 import 'package:time_crunch/screens/home_page.dart';
 import 'package:time_crunch/screens/meetings_page.dart';
 import 'package:time_crunch/screens/email_page.dart';
@@ -17,7 +17,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();// elliot don't delete this its for the dark mode
+  await GetStorage.init();
 
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();   //HIVE SETUP
@@ -40,7 +40,7 @@ void main() async{
   //final settingsBox = Hive.box('settings');  this is the line we use later instead of opening it again
   //yknow like in a different class further down like within a widget
   settingsBox.put('0', 0667); //the key can also be a string, so for userID could be like EllCamacho etc
-                              //this ONLY puts the number 0667 into the entry for key 0
+  //this ONLY puts the number 0667 into the entry for key 0
 
   Settings settingsProfile1 = Settings(
       settingsProfile: 1,
@@ -56,11 +56,11 @@ void main() async{
   print(something); //this just prints 0667 that we just added to the settings box
   final somethingElse = settingsBox.get('1');
   print(somethingElse); //this isn't gonna print much bcus it's an object and we don't have like a repr function
-                        //defined or anything
+  //defined or anything
   Settings thisOne = settingsBox.get('1');
   userID = thisOne.userID;
   print(userID);  //so this looks kinda pointless but it's me retrieving specifically a variable from within the box
-                  //bcus as seen with the above lines you can't just print the whole thing like a list
+  //bcus as seen with the above lines you can't just print the whole thing like a list
   //
 
   ///// end of Elliot demo-ing crud stuff //////
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+//Sets up the widget
 class navBar extends StatefulWidget {
   navBar({Key? key}) : super(key: key);
 
@@ -91,7 +91,7 @@ class navBar extends StatefulWidget {
   _navBarState createState() =>
       _navBarState();
 }
-
+//Incoportates and displays the nav bar on page
 class _navBarState
     extends State<navBar> {
   int index = 0;
@@ -103,7 +103,7 @@ class _navBarState
     );
   }
 
-// * Body Section Components
+// This allows user to use nav bar to switch screens, index being the one they have currently selected.
   bodySection() {
     switch (index){
       case 0:
@@ -117,35 +117,18 @@ class _navBarState
     }
   }
 
-// * BottomNavigationBar Section Components
+// This is the bottom navigation bar
+// This creates a custom bottom navigation bar in the app
   customBottomNavBar() {
-    return BottomNavyBar(  //bottom navy bar can't change name because it's an import
+    return BottomNavyBar(
       selectedIndex: index,
-      //backgroundColor: Colors.blue,
-      items: [
-        BottomNavyBarItem(
-          icon: Icon(Icons.home_outlined),
-          title: Text('Home'),
-          //activeColor: Colors.white,
-          textAlign: TextAlign.center,
-        ),
-        BottomNavyBarItem(
-            icon: Icon(Icons.people),
-            title: Text('Meetings'),
-            //activeColor: Colors.white,
-            textAlign: TextAlign.center),
-        BottomNavyBarItem(
-          icon: Icon(Icons.email_outlined),
-          title: Text('Email'),
-          //activeColor: Colors.white,
-          textAlign: TextAlign.center,
-        ),
-        BottomNavyBarItem(
-          icon: Icon(Icons.newspaper_outlined),
-          title: Text('News'),
-          //activeColor: Colors.white,
-          textAlign: TextAlign.center,
-        ),
+      //The `index` variable is used to indicate the currently selected tab.
+      items: [ // The items is a list of widgets, which represent each screen in the navigation bar.
+        // Each item has an `icon`, `title`, and `textAlign` property to structure the navigation bar.
+        BottomNavyBarItem(icon: Icon(Icons.home_outlined),  title: Text('Home'), textAlign: TextAlign.center,),
+        BottomNavyBarItem(icon: Icon(Icons.people), title: Text('Meetings'), textAlign: TextAlign.center),
+        BottomNavyBarItem(icon: Icon(Icons.email_outlined), title: Text('Email'), textAlign: TextAlign.center,),
+        BottomNavyBarItem(icon: Icon(Icons.newspaper_outlined), title: Text('News'), textAlign: TextAlign.center,),
       ],
       onItemSelected: (index) => setState(() => this.index = index),
     );
