@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart'; // Import Hive Flutter package
 
-
+//Hive database for creating and storing tasks
 
 part 'task_hive.g.dart';
 

@@ -66,6 +66,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
         print('Time cancelled');
       }
     }
+
+    // Add the task by storing these variables in the database
     Future<void> _addTask(String title, String note, DateTime date, TimeOfDay startTime, TimeOfDay endTime) async {
       final newTask = TodoTask()
           ..title = _title

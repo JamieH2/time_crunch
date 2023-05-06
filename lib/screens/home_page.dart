@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Get.to(TaskListPage());
             },
+            //Button to go to the my tasks page
             child: Text("My Tasks"),
           ),
           Container(

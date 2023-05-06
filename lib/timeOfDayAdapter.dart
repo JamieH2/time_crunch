@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+// Adapter to store the TimeOfDay data type in the database
+
 class TimeOfDayAdapter extends TypeAdapter<TimeOfDay> {
   @override
   final typeId = 101;

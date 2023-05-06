@@ -12,7 +12,7 @@ class TaskListPage extends StatefulWidget {
   @override
   _TaskListPageState createState() => _TaskListPageState();
 }
-
+// creating the overall page layout
 class _TaskListPageState extends State<TaskListPage> {
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class _TaskListPageState extends State<TaskListPage> {
         ],
       ),
       body: ValueListenableBuilder(
+        // listen to the database
         valueListenable: HiveBoxes.taskBox.listenable(),
         builder: (context, Box<TodoTask> box, _) {
           if (box.isEmpty) {
@@ -48,6 +49,7 @@ class _TaskListPageState extends State<TaskListPage> {
             itemCount: box.length,
             itemBuilder: (context, index) {
               final task = box.getAt(index)!;
+              // delete the task
               return Dismissible(
                 key: Key(task.key.toString()),
                 direction: DismissDirection.endToStart,
@@ -85,6 +87,7 @@ class _TaskListPageState extends State<TaskListPage> {
                   title: Text(task.title,
                       style: TextStyle(fontSize: 15)),
                   subtitle: Text(task.note),
+                  // Displaying the tasks
                   trailing: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
