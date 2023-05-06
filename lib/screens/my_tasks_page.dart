@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 import '../screens/settings_page.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:time_crunch/task_hive.dart';
 import 'package:time_crunch/hive_boxes.dart';
@@ -18,9 +17,10 @@ class _TaskListPageState extends State<TaskListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //this appbar has a back button on the left the company name center and the settings button right
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text("Time Crunch"),
           ],
         ),
@@ -41,7 +41,7 @@ class _TaskListPageState extends State<TaskListPage> {
         valueListenable: HiveBoxes.taskBox.listenable(),
         builder: (context, Box<TodoTask> box, _) {
           if (box.isEmpty) {
-            return Center(
+            return const Center(
               child: Text("No tasks found"),
             );
           }

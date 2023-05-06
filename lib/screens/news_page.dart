@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,8 +8,8 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
+        //this appbar has our logo on the left the company name center and the settings button right
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -42,10 +41,17 @@ class NewsPage extends StatelessWidget {
           ),
         ],
       ),
-    body: SingleChildScrollView(
+      body: Column(
+          children: [
+      Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text('Scroll for more news providers'),
+    ),
+    //so this is all the code for the buttons of the news providers it's in a SingleChildScrollView widget so from a mobile the user can scroll through
+    SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Padding(
-    padding: const EdgeInsets.only(left: 16.0),
+    padding: const EdgeInsets.only(left: 16.0, top: 45),
     child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -263,6 +269,6 @@ class NewsPage extends StatelessWidget {
         ),
       ),
     ),
-    );
+    ]));
   }
 }

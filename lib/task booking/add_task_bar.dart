@@ -91,6 +91,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
+          //this appbar has a back button on the left the company name center and the settings button right
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -116,6 +117,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
           ],
         ),
         body: Padding(
+          // so the code in the body creates the input fields it also uses decoration to fade out the input form hints
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: SingleChildScrollView(
             child: Column(
@@ -142,49 +144,55 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     onPressed: _getDateFromUser,
                   ),
                 ),
-                Row(
+                Column(
                   children: [
-                    Expanded(
-                      child: MyInputField(
-                        title: "Start Time",
-                        hint: _startTime.format(context),
-                        widget: IconButton(
-                          onPressed: () {
-                            _getTimeFromUser(isStartTime: true);
-                          },
-                          icon: Icon(
-                            Icons.access_time_rounded,
-                            color: Colors.grey,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: MyInputField(
+                            title: "Start Time",
+                            hint: _startTime.format(context),
+                            widget: IconButton(
+                              onPressed: () {
+                                _getTimeFromUser(isStartTime: true);
+                              },
+                              icon: Icon(
+                                Icons.access_time_rounded,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: MyInputField(
-                        title: "End Time",
-                        hint: _endTime.format(context),
-                        // convert TimeOfDay to String
-                        widget: IconButton(
-                          onPressed: () {
-                            _getTimeFromUser(isStartTime: false);
-                          },
-                          icon: Icon(
-                            Icons.access_time_rounded,
-                            color: Colors.grey,
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: MyInputField(
+                            title: "End Time",
+                            hint: _endTime.format(context),
+                            widget: IconButton(
+                              onPressed: () {
+                                _getTimeFromUser(isStartTime: false);
+                              },
+                              icon: Icon(
+                                Icons.access_time_rounded,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-
+                      ],
                     ),
-                    SizedBox(height: 0.0),
-                      ElevatedButton(
+                    SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
                         onPressed: () async {
                           await _addTask(_title, _note, _selectedDate, _startTime, _endTime);
                         },
                         child: Text('Add Task'),
-                      )
-                    ]
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

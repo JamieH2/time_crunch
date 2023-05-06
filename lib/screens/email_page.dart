@@ -2,6 +2,8 @@ import 'settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// email screen class, the email class allows the user to send a email from the app
+// it uses a package called url_launcher to launch the devices email cient and input the message
 class EmailPage extends StatefulWidget {
   const EmailPage({Key? key}) : super(key: key);
 
@@ -17,11 +19,11 @@ class _EmailPageState extends State<EmailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
+        //this appbar has our logo on the left the company name center and the settings button right
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text("Time Crunch"),
           ],
         ),
@@ -37,13 +39,13 @@ class _EmailPageState extends State<EmailPage> {
         ),
         actions: [
           Container(
-            padding: EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: 20),
             child: IconButton(
-              icon: Icon(Icons.settings, size: 40),
+              icon: const Icon(Icons.settings, size: 40),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
                 );
               },
             ),
@@ -51,9 +53,9 @@ class _EmailPageState extends State<EmailPage> {
         ],
       ),
 
-
+//this is the code for the input form which also uses controllers to save the input data
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             buildTextField(title: 'To', controller: controllerTo),
@@ -78,60 +80,66 @@ class _EmailPageState extends State<EmailPage> {
                 message: controllerMessage.text,
               ),
             ),
+            //three buttons have been added to give the user the ability to login to their email accounts quickly
             SizedBox(height: 32),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://mail.google.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset('assets/gmail.png', width: 80, height: 80),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      const url = 'https://mail.google.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/gmail.png', width: 80, height: 80),
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://www.outlook.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                  SizedBox(width: 100), // add space between logos
+                  InkWell(
+                    onTap: () async {
+                      const url = 'https://www.outlook.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/outlook.png', width: 80, height: 80),
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () async {
-                    const url = 'https://mail.yahoo.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                  const SizedBox(width: 100),
+                  InkWell(
+                    onTap: () async {
+                      const url = 'https://mail.yahoo.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/yahoo.png', width: 80, height: 80),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
   }
-
+// this defines the data that is used to write the email in the devices native email client
   Future launchEmail({
     required String toEmail,
     required String subject,
