@@ -18,7 +18,7 @@ class _VideoAppState extends State<TutorialPage> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/orange.mp4')
+    _controller = VideoPlayerController.asset('assets/videos/tutorial.mp4')
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
